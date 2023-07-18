@@ -1,0 +1,33 @@
+.carousel {
+	display: flex;
+	gap: 1em;
+	width: 780px;
+	// overflow: hidden;
+}
+.overflow {
+	overflow: hidden;
+}
+.cards {
+	display: flex;
+	overflow: hidden;
+	gap: 1em;
+}
+.cards_transitionNext {
+	display: flex;
+	overflow: hidden;
+	gap: 1em;
+	transform: translateX(800px);
+	transition-property: transform;
+	transition-duration: 0.7s;
+}
+.cards_transitionPrevious {
+	display: flex;
+	overflow: hidden;
+	gap: 1em;
+	transform: translateX(-800px);
+	transition-property: transform;
+	transition-duration: 0.7s;
+}
+
+@keyframes grow {
+}
