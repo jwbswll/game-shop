@@ -2,32 +2,95 @@
 	display: flex;
 	gap: 1em;
 	width: 780px;
-	// overflow: hidden;
 }
 .overflow {
 	overflow: hidden;
 }
-.cards {
+.cards_left {
 	display: flex;
 	overflow: hidden;
 	gap: 1em;
+	animation: slideinleft 0.7s;
 }
+
+.cards_right {
+	display: flex;
+	overflow: hidden;
+	gap: 1em;
+	animation: slideinright 0.7s;
+}
+
 .cards_transitionNext {
 	display: flex;
 	overflow: hidden;
 	gap: 1em;
-	transform: translateX(800px);
-	transition-property: transform;
-	transition-duration: 0.7s;
+	animation: slideoutright 0.7s;
 }
 .cards_transitionPrevious {
 	display: flex;
 	overflow: hidden;
 	gap: 1em;
-	transform: translateX(-800px);
-	transition-property: transform;
-	transition-duration: 0.7s;
+	animation: slideoutleft 0.7s;
 }
 
-@keyframes grow {
+.dot_container {
+	width: 780px;
+	display: flex;
+	gap: 0.3em;
+	justify-content: center;
+	margin-top: 5px;
+	.dot {
+		height: 10px;
+		width: 10px;
+		background-color: darkgray;
+		border: 1px solid white;
+		border-radius: 50%;
+	}
+	.dot_active {
+		border-radius: 50%;
+		height: 10px;
+		width: 10px;
+		background-color: white;
+		border: 1px solid white;
+	}
+}
+
+@keyframes slideinleft {
+	from {
+		transform: translateX(100%);
+	}
+
+	to {
+		transform: translateX(0%);
+	}
+}
+
+@keyframes slideinright {
+	from {
+		transform: translateX(-100%);
+	}
+
+	to {
+		transform: translateX(0%);
+	}
+}
+
+@keyframes slideoutright {
+	from {
+		transform: translateX(0%);
+	}
+
+	to {
+		transform: translateX(100%);
+	}
+}
+
+@keyframes slideoutleft {
+	from {
+		transform: translateX(0%);
+	}
+
+	to {
+		transform: translateX(-100%);
+	}
 }

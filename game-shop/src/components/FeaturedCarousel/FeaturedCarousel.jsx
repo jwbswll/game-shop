@@ -6,6 +6,7 @@ const FeaturedCarousel = ({ games }) => {
 	const [current, setCurrent] = useState(0);
 	const [transitionNext, setTransitionNext] = useState(false);
 	const [transitionPrevious, setTransitionPrevious] = useState(false);
+	const [slide, setSlide] = useState("left");
 	const featured = games.filter((game) => game.featured);
 	let index = 0;
 	const nestedFeatured = featured.reduce(
@@ -25,7 +26,7 @@ const FeaturedCarousel = ({ games }) => {
 
 	const next = () => {
 		setTransitionNext(true);
-
+		setSlide("right");
 		setTimeout(() => {
 			if (current <= 1) {
 				setCurrent(current + 1);
@@ -33,11 +34,12 @@ const FeaturedCarousel = ({ games }) => {
 				setCurrent(0);
 			}
 			setTransitionNext(false);
-		}, 550);
+		}, 600);
 	};
 
 	const previous = () => {
 		setTransitionPrevious(true);
+		setSlide("left");
 		setTimeout(() => {
 			if (current > 0) {
 				setCurrent(current - 1);
@@ -45,25 +47,33 @@ const FeaturedCarousel = ({ games }) => {
 				setCurrent(2);
 			}
 			setTransitionPrevious(false);
-		}, 900);
+		}, 700);
 	};
 
 	return (
-		<div className={style.carousel}>
-			<button onClick={previous}>{`<`}</button>
-			<div className={style.overflow}>
-				<div
-					className={
-						(transitionNext && style.cards_transitionNext) ||
-						(transitionPrevious && style.cards_transitionPrevious) ||
-						style.cards
-					}
-				>
-					<GameCardWrapper games={nestedFeatured[current]} />
+		<>
+			<div className={style.carousel}>
+				<button onClick={previous}>{`<`}</button>
+				<div className={style.overflow}>
+					<div
+						className={
+							(transitionNext && style.cards_transitionNext) ||
+							(transitionPrevious && style.cards_transitionPrevious) ||
+							(slide == "left" && style.cards_left) ||
+							(slide == "right" && style.cards_right)
+						}
+					>
+						<GameCardWrapper games={nestedFeatured[current]} />
+					</div>
 				</div>
+				<button onClick={next}>{`>`}</button>
 			</div>
-			<button onClick={next}>{`>`}</button>
-		</div>
+			<div className={style.dot_container}>
+				<div className={current == 0 ? style.dot_active : style.dot}></div>
+				<div className={current == 1 ? style.dot_active : style.dot}></div>
+				<div className={current == 2 ? style.dot_active : style.dot}></div>
+			</div>
+		</>
 	);
 };
 

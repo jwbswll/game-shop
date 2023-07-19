@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import FeaturedCarousel from "../../components/FeaturedCarousel/FeaturedCarousel";
+import { GamesContext } from "../../GamesContext";
 
-const HomePage = ({ games }) => {
+const HomePage = () => {
+	const games = useContext(GamesContext);
 	return (
 		<>
 			<div>HomePage</div>
