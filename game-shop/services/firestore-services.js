@@ -8,6 +8,5 @@ export const getGames = async () => {
 		id: doc.id,
 		...doc.data(),
 	}));
-	console.log(gamesData);
 	return gamesData;
 };

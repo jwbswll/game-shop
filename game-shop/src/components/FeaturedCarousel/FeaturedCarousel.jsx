@@ -6,7 +6,7 @@ const FeaturedCarousel = ({ games }) => {
 	const [current, setCurrent] = useState(0);
 	const [transitionNext, setTransitionNext] = useState(false);
 	const [transitionPrevious, setTransitionPrevious] = useState(false);
-	const [slide, setSlide] = useState("left");
+	const [slide, setSlide] = useState(null);
 	const featured = games.filter((game) => game.featured);
 	let index = 0;
 	const nestedFeatured = featured.reduce(
@@ -53,25 +53,44 @@ const FeaturedCarousel = ({ games }) => {
 	return (
 		<>
 			<div className={style.carousel}>
-				<button onClick={previous}>{`<`}</button>
-				<div className={style.overflow}>
-					<div
-						className={
-							(transitionNext && style.cards_transitionNext) ||
-							(transitionPrevious && style.cards_transitionPrevious) ||
-							(slide == "left" && style.cards_left) ||
-							(slide == "right" && style.cards_right)
-						}
-					>
-						<GameCardWrapper games={nestedFeatured[current]} />
+				<h2>Featured Games</h2>
+				<div className={style.btn_container}>
+					<button onClick={previous}>{`<`}</button>
+					<div className={style.overflow}>
+						<div
+							className={
+								(transitionNext && style.cards_transitionNext) ||
+								(transitionPrevious && style.cards_transitionPrevious) ||
+								(slide == "left" && style.cards_left) ||
+								(slide == "right" && style.cards_right) ||
+								(!slide && style.cards)
+							}
+						>
+							<GameCardWrapper games={nestedFeatured[current]} />
+						</div>
 					</div>
+					<button onClick={next}>{`>`}</button>
 				</div>
-				<button onClick={next}>{`>`}</button>
-			</div>
-			<div className={style.dot_container}>
-				<div className={current == 0 ? style.dot_active : style.dot}></div>
-				<div className={current == 1 ? style.dot_active : style.dot}></div>
-				<div className={current == 2 ? style.dot_active : style.dot}></div>
+				<div className={style.dot_container}>
+					<div
+						onClick={() => {
+							setCurrent(0);
+						}}
+						className={current == 0 ? style.dot_active : style.dot}
+					></div>
+					<div
+						onClick={() => {
+							setCurrent(1);
+						}}
+						className={current == 1 ? style.dot_active : style.dot}
+					></div>
+					<div
+						onClick={() => {
+							setCurrent(2);
+						}}
+						className={current == 2 ? style.dot_active : style.dot}
+					></div>
+				</div>
 			</div>
 		</>
 	);

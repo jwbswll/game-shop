@@ -1,5 +1,14 @@
+.content {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	padding: 2em;
+}
+
 .list {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 2em;
+	width: 80vw;
+	justify-content: center;
 }

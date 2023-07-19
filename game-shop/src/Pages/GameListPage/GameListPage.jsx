@@ -6,11 +6,13 @@ import style from "./GameListPage.module.scss";
 const GameListPage = () => {
 	const games = useContext(GamesContext);
 	return (
-		<div className={style.list}>
-			{games.map((game, i) => {
-				return <GameCard key={i} game={game} />;
-			})}
-		</div>
+		<section className={style.content}>
+			<div className={style.list}>
+				{games.map((game, i) => {
+					return <GameCard key={i} game={game} />;
+				})}
+			</div>
+		</section>
 	);
 };
 

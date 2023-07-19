@@ -5,15 +5,17 @@ import HomePage from "./Pages/HomePage/HomePage";
 import GameListPage from "./Pages/GameListPage/GameListPage";
 import GamePage from "./Pages/GamePage/GamePage";
 import Cart from "./Pages/Cart/Cart";
-import NavBar from "./components/NavBar/NavBar";
 import { GamesContext } from "./GamesContext";
+import Header from "./components/Header/Header";
+import style from "./App.module.scss";
+import { CartContext } from "./CartContext";
 
 function App() {
 	const [games, setGames] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [cart, setCart] = useState([]);
 	useEffect(() => {
 		if (loading) {
-			console.log("runs");
 			getGames()
 				.then((gameData) => {
 					setGames([...gameData]);
@@ -25,15 +27,19 @@ function App() {
 	}, []);
 	return (
 		<GamesContext.Provider value={games}>
-			<BrowserRouter>
-				<NavBar />
-				<Routes>
-					<Route path="/" element={<HomePage />} />
-					<Route path="/games" element={<GameListPage />} />
-					<Route path="/games/:id" element={<GamePage />} />
-					<Route path="/cart" element={<Cart />} />
-				</Routes>
-			</BrowserRouter>
+			<CartContext.Provider value={{ cart, setCart }}>
+				<BrowserRouter>
+					<Header />
+					<main className={style.content}>
+						<Routes>
+							<Route path="/" element={<HomePage />} />
+							<Route path="/games" element={<GameListPage />} />
+							<Route path="/games/:id" element={<GamePage />} />
+							<Route path="/cart" element={<Cart />} />
+						</Routes>
+					</main>
+				</BrowserRouter>
+			</CartContext.Provider>
 		</GamesContext.Provider>
 	);
 }
