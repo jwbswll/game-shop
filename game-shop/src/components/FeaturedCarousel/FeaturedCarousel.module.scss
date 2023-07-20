@@ -2,23 +2,51 @@
 	display: flex;
 	gap: 1em;
 	width: 100%;
-	height: 550px;
+	height: 400px;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	margin-bottom: 20px;
+}
+
+.featured {
+	margin: 0;
 }
 .overflow {
 	overflow: hidden;
+	width: 700px;
 }
 .btn_container {
 	display: flex;
 	gap: 0.5em;
+	height: 320px;
+	width: 770px;
+	.arrow {
+		&_left {
+			font-size: 60px;
+			color: lightblue;
+			cursor: pointer;
+			left: 30px;
+			top: 140px;
+			position: relative;
+			z-index: 10;
+		}
+		&_right {
+			font-size: 60px;
+			color: lightblue;
+			cursor: pointer;
+			position: relative;
+			right: 30px;
+			top: 140px;
+			z-index: 10;
+		}
+	}
 }
 .cards_left {
 	display: flex;
 	overflow: hidden;
 	gap: 1em;
-	animation: slideinleft 0.7s;
+	animation: slideinright 0.7s;
 }
 
 .cards {
@@ -31,20 +59,20 @@
 	display: flex;
 	overflow: hidden;
 	gap: 1em;
-	animation: slideinright 0.7s;
+	animation: slideinleft 0.7s;
 }
 
 .cards_transitionNext {
 	display: flex;
 	overflow: hidden;
 	gap: 1em;
-	animation: slideoutright 0.7s;
+	animation: slideoutleft 0.7s;
 }
 .cards_transitionPrevious {
 	display: flex;
 	overflow: hidden;
 	gap: 1em;
-	animation: slideoutleft 0.7s;
+	animation: slideoutright 0.7s;
 }
 
 .dot_container {

@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import GameCardWrapper from "../GameCardWrapper/GameCardWrapper";
 import style from "./FeaturedCarousel.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+	faChevronCircleRight,
+	faChevronCircleLeft,
+} from "@fortawesome/free-solid-svg-icons";
 
 const FeaturedCarousel = ({ games }) => {
 	const [current, setCurrent] = useState(0);
@@ -53,11 +58,16 @@ const FeaturedCarousel = ({ games }) => {
 	return (
 		<>
 			<div className={style.carousel}>
-				<h2>Featured Games</h2>
+				<h2 className={style.featured}>Featured Games</h2>
 				<div className={style.btn_container}>
-					<button onClick={previous}>{`<`}</button>
+					<FontAwesomeIcon
+						onClick={previous}
+						className={style.arrow_left}
+						icon={faChevronCircleLeft}
+					/>
 					<div className={style.overflow}>
 						<div
+							on
 							className={
 								(transitionNext && style.cards_transitionNext) ||
 								(transitionPrevious && style.cards_transitionPrevious) ||
@@ -69,7 +79,11 @@ const FeaturedCarousel = ({ games }) => {
 							<GameCardWrapper games={nestedFeatured[current]} />
 						</div>
 					</div>
-					<button onClick={next}>{`>`}</button>
+					<FontAwesomeIcon
+						onClick={next}
+						className={style.arrow_right}
+						icon={faChevronCircleRight}
+					/>
 				</div>
 				<div className={style.dot_container}>
 					<div
