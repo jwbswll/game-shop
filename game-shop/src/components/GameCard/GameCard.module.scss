@@ -1,7 +1,9 @@
+@use "../../colors" as c;
+
 .card {
-	background-color: lightgray;
+	background-color: c.$secondary;
 	border-radius: 10px;
-	color: black;
+	color: white;
 	width: 200px;
 	height: 320px;
 	.content {
@@ -25,7 +27,7 @@
 			}
 			.platforms {
 				font-size: smaller;
-				color: gray;
+				color: c.$primary;
 				margin: 0;
 				padding: 0;
 			}

@@ -1,10 +1,25 @@
+@use "../../colors" as c;
+
 .header {
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 	position: fixed;
 	height: 50px;
 	z-index: 20;
-	background-color: darkgray;
+	background-color: c.$tertiary;
 	width: 100%;
 	margin: 0;
+	.title {
+		margin: 0;
+		color: c.$primary;
+		font-size: 2em;
+		margin-left: 20px;
+	}
+	.cart {
+		margin-right: 10px;
+		font-size: 20px;
+		color: c.$primary;
+	}
 }

@@ -1,11 +1,15 @@
+@use "./colors" as c;
+
 body {
 	margin: 0;
 	font-family: Helvetica, Arial, sans-serif;
-	background-color: #646cff;
+	background-color: c.$primary;
 }
 
 .content {
 	padding-top: 70px;
+	min-height: 100vh;
+	position: relative;
 }
 
 a {

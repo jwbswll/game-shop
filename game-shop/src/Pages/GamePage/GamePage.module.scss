@@ -1,5 +1,55 @@
+@use "../../colors" as c;
+
 .content {
 	display: flex;
-	flex-direction: column;
 	align-items: center;
+	justify-content: center;
+	gap: 3em;
+	.image {
+		height: 400px;
+		width: 300px;
+		object-fit: cover;
+		border-radius: 10px;
+	}
+	.text_container {
+		width: 300px;
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+		.title {
+			font-size: 3em;
+			margin: 0;
+		}
+		.price {
+			font-size: 2em;
+			margin: 0;
+		}
+		.quantity_container {
+			display: flex;
+			gap: 0.5em;
+			align-items: center;
+			.quantity_input {
+				width: 35px;
+				color: white;
+				background-color: c.$secondary;
+				border: 0.5px solid c.$tertiary;
+				border-radius: 5px;
+			}
+		}
+		.platform_select {
+			width: 120px;
+			color: white;
+			background-color: c.$secondary;
+			border: 0.5px solid c.$tertiary;
+			border-radius: 5px;
+		}
+		.add_to_cart {
+			background-color: c.$tertiary;
+			border: 0.5px solid c.$tertiary;
+			border-radius: 5px;
+			padding: 1em;
+			width: 120px;
+			color: white;
+		}
+	}
 }

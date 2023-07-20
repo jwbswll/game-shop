@@ -58,7 +58,7 @@ const FeaturedCarousel = ({ games }) => {
 	return (
 		<>
 			<div className={style.carousel}>
-				<h2 className={style.featured}>Featured Games</h2>
+				<h2 className={style.featured}>Featured</h2>
 				<div className={style.btn_container}>
 					<FontAwesomeIcon
 						onClick={previous}
@@ -67,7 +67,6 @@ const FeaturedCarousel = ({ games }) => {
 					/>
 					<div className={style.overflow}>
 						<div
-							on
 							className={
 								(transitionNext && style.cards_transitionNext) ||
 								(transitionPrevious && style.cards_transitionPrevious) ||

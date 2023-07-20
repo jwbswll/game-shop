@@ -1,3 +1,11 @@
+@use "../../colors" as c;
+
+.title {
+	text-align: center;
+	color: c.$tertiary;
+	margin-top: 30px;
+}
+
 .content {
 	display: flex;
 	width: 100%;
