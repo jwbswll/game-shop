@@ -1,16 +1,11 @@
 @use "../../colors" as c;
 
-.title {
-	text-align: center;
-	color: c.$tertiary;
-	margin-top: 30px;
-}
-
 .content {
 	display: flex;
 	width: 100%;
-	justify-content: center;
+	align-items: center;
 	margin-bottom: 30px;
+	flex-direction: column;
 }
 
 .list {
@@ -19,4 +14,35 @@
 	gap: 2em;
 	width: 80vw;
 	justify-content: center;
+}
+
+.select_title_container {
+	display: flex;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	justify-content: space-between;
+	width: 25%;
+	width: 65vw;
+	.select_label {
+		color: c.$tertiary;
+	}
+
+	.platform_select {
+		width: 130px;
+		color: white;
+		background-color: c.$secondary;
+		border: 0.5px solid c.$tertiary;
+		border-radius: 5px;
+		padding: 0.5em;
+		max-height: 30px;
+		cursor: pointer;
+	}
+
+	.title {
+		justify-self: self-start;
+		text-align: center;
+		color: c.$tertiary;
+		margin: 0;
+		padding: 0;
+	}
 }

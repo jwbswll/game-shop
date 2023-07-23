@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext, createContext } from "react";
-import { getGames } from "../services/firestore-services";
+import { getGameSubscription } from "../services/firestore-services";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./Pages/HomePage/HomePage";
 import GamePage from "./Pages/GamePage/GamePage";
@@ -7,8 +7,10 @@ import Cart from "./Pages/Cart/Cart";
 import { GamesContext } from "./GamesContext";
 import Header from "./components/Header/Header";
 import style from "./App.module.scss";
-import { CartContext } from "./CartContext";
 import Footer from "./components/Footer/Footer";
+import RenderAtTop from "./components/RenderAtTop/RenderAtTop";
+import Thanks from "./Pages/Thanks/Thanks";
+import NotFound from "./Pages/NotFound/NotFound";
 
 function App() {
 	const [games, setGames] = useState([]);
@@ -16,30 +18,28 @@ function App() {
 	const [cart, setCart] = useState([]);
 	useEffect(() => {
 		if (loading) {
-			getGames()
-				.then((gameData) => {
-					setGames([...gameData]);
-				})
-				.catch((e) => console.log(e));
+			const unsubscribe = getGameSubscription(setGames);
+			setLoading(false);
+			return () => unsubscribe();
 		}
-
-		setLoading(false);
 	}, []);
 	return (
 		<GamesContext.Provider value={{ games, loading }}>
-			<CartContext.Provider value={{ cart, setCart }}>
-				<BrowserRouter>
+			<BrowserRouter>
+				<RenderAtTop>
 					<Header />
 					<main className={style.content}>
 						<Routes>
 							<Route path="/" element={<HomePage />} />
-							<Route path="/games/:id" element={<GamePage />} />
+							<Route path="/:id" element={<GamePage />} />
 							<Route path="/cart" element={<Cart />} />
+							<Route path="/thanks" element={<Thanks />} />
+							<Route path="*" element={<NotFound />} />
 						</Routes>
 					</main>
 					<Footer />
-				</BrowserRouter>
-			</CartContext.Provider>
+				</RenderAtTop>
+			</BrowserRouter>
 		</GamesContext.Provider>
 	);
 }

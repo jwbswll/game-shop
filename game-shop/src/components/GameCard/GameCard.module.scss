@@ -3,7 +3,6 @@
 .card {
 	background-color: c.$secondary;
 	border-radius: 10px;
-	color: white;
 	width: 200px;
 	height: 320px;
 	.content {
@@ -11,6 +10,7 @@
 		display: flex;
 		align-items: center;
 		flex-direction: column;
+		color: white;
 		.img {
 			height: 180px;
 			width: 130px;
@@ -38,10 +38,32 @@
 		width: 100%;
 		align-self: flex-end;
 		margin: 5px 0 5px 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		color: white;
 		.price {
 			font-size: 1.5em;
 			margin: 0 0 0 10px;
 			padding: 0;
+		}
+		.favourite {
+			font-size: 1.5em;
+			margin: 0 10px 0 0;
+			color: c.$primary;
+			cursor: pointer;
+			&:hover {
+				color: c.$tertiary;
+			}
+			&_active {
+				color: c.$tertiary;
+				font-size: 1.5em;
+				margin: 0 10px 0 0;
+				cursor: pointer;
+				&:hover {
+					color: c.$primary;
+				}
+			}
 		}
 	}
 }

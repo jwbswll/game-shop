@@ -1,0 +1,64 @@
+@use "../../colors" as c;
+
+.card {
+	display: flex;
+	width: 600px;
+	gap: 2.5em;
+	color: black;
+
+	.image {
+		height: 200px;
+		width: 150px;
+		object-fit: cover;
+		border-radius: 10px;
+	}
+	.text_container {
+		width: 400px;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		gap: 0.8em;
+		border-bottom: 1px solid c.$tertiary;
+		.name {
+			margin: 0;
+			padding: 0;
+		}
+		.platform {
+			margin: 0;
+			padding: 0;
+			font-size: smaller;
+		}
+		.subtotal {
+			margin: 0;
+			padding: 0;
+			font-weight: bold;
+			.price {
+				font-weight: lighter;
+			}
+		}
+		.count_container {
+			display: flex;
+			gap: 0.5em;
+			height: 20px;
+			align-items: center;
+			width: 80px;
+			justify-content: space-between;
+			.count_btn {
+				background-color: c.$tertiary;
+				border: 0.5px solid c.$tertiary;
+				border-radius: 5px;
+				width: 100%;
+				color: white;
+				cursor: pointer;
+			}
+		}
+		.remove {
+			width: 25%;
+			background-color: c.$tertiary;
+			border: 0.5px solid c.$tertiary;
+			border-radius: 5px;
+			color: white;
+			cursor: pointer;
+		}
+	}
+}

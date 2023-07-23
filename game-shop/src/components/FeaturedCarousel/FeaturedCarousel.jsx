@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import GameCardWrapper from "../GameCardWrapper/GameCardWrapper";
 import style from "./FeaturedCarousel.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,7 +13,9 @@ const FeaturedCarousel = ({ games }) => {
 	const [transitionPrevious, setTransitionPrevious] = useState(false);
 	const [slide, setSlide] = useState(null);
 	const featured = games.filter((game) => game.featured);
+
 	let index = 0;
+
 	const nestedFeatured = featured.reduce(
 		(acc, curr) => {
 			if (index < 3) {
@@ -39,7 +41,7 @@ const FeaturedCarousel = ({ games }) => {
 				setCurrent(0);
 			}
 			setTransitionNext(false);
-		}, 600);
+		}, 700);
 	};
 
 	const previous = () => {
@@ -54,6 +56,22 @@ const FeaturedCarousel = ({ games }) => {
 			setTransitionPrevious(false);
 		}, 700);
 	};
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setTransitionNext(true);
+			setSlide("right");
+			setTimeout(() => {
+				if (current <= 1) {
+					setCurrent(current + 1);
+				} else {
+					setCurrent(0);
+				}
+				setTransitionNext(false);
+			}, 650);
+		}, 8000);
+		return () => clearInterval(interval);
+	}, [current]);
 
 	return (
 		<>

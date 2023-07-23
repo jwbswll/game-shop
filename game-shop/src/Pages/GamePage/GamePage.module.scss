@@ -1,10 +1,23 @@
 @use "../../colors" as c;
 
+.center {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+.main {
+	display: flex;
+	flex-direction: column;
+	width: 900px;
+	align-items: center;
+}
 .content {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-around;
 	gap: 3em;
+	margin-top: 2em;
+	width: 100%;
 	.image {
 		height: 400px;
 		width: 300px;
@@ -12,7 +25,7 @@
 		border-radius: 10px;
 	}
 	.text_container {
-		width: 300px;
+		width: 400px;
 		display: flex;
 		flex-direction: column;
 		gap: 1em;
@@ -42,14 +55,47 @@
 			background-color: c.$secondary;
 			border: 0.5px solid c.$tertiary;
 			border-radius: 5px;
+			cursor: pointer;
 		}
 		.add_to_cart {
 			background-color: c.$tertiary;
 			border: 0.5px solid c.$tertiary;
 			border-radius: 5px;
 			padding: 1em;
-			width: 120px;
+			width: 100%;
 			color: white;
+			cursor: pointer;
 		}
 	}
+}
+.dialogues {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	color: white;
+	height: 100px;
+	.error {
+		background-color: rgb(186, 72, 72);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		padding: 0.5em;
+		border-radius: 10px;
+		width: 100%;
+	}
+	.added_to_cart {
+		background-color: rgb(53, 114, 53);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		padding: 0.5em;
+		border-radius: 10px;
+		width: 100%;
+	}
+}
+.description {
+	margin-top: 30px;
+	width: 95%;
 }
