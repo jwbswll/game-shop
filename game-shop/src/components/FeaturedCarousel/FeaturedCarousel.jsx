@@ -14,23 +14,15 @@ const FeaturedCarousel = ({ games }) => {
 	const [slide, setSlide] = useState(null);
 	const featured = games.filter((game) => game.featured);
 
-	let index = 0;
 	const nestedFeatured = featured.reduce(
-		(acc, curr) => {
-			if (index < 3) {
-				if (acc[index].length < 3) {
-					acc[index].push(curr);
-				} else {
-					index++;
-					acc[index].push(curr);
-				}
-				return acc;
-			}
+		(acc, curr, i) => {
+			acc[i % 3].push(curr);
+			return acc;
 		},
 		[[], [], []]
 	);
 
-	const next = (time = 700) => {
+	const next = () => {
 		setTransitionNext(true);
 		setSlide("right");
 		setTimeout(() => {
@@ -40,7 +32,7 @@ const FeaturedCarousel = ({ games }) => {
 				setCurrent(0);
 			}
 			setTransitionNext(false);
-		}, time);
+		}, 700);
 	};
 
 	const previous = () => {
@@ -58,7 +50,7 @@ const FeaturedCarousel = ({ games }) => {
 
 	useEffect(() => {
 		const interval = setInterval(() => {
-			next(650);
+			next();
 		}, 8000);
 		return () => clearInterval(interval);
 	}, [current]);
